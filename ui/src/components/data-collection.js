@@ -567,39 +567,7 @@ export default function DataCollection() {
             ) : (
               <></>
             )}
-            <Grid item xs={12} xl={2}>
-              <InputLabel
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  fontWeight: 700,
-                }}
-              >
-                Number of rooms
-              </InputLabel>
-            </Grid>
-            <Grid item xs={12} xl={10}>
-              <TextField
-                id="rooms"
-                label="No. of rooms"
-                fullWidth
-                required
-                value={getFormValueByKey("numberOfRooms")}
-                onChange={(e) => {
-                  if (e.target.value.length !== 0) {
-                    const ele = parseInt(e.target.value);
-                    console.log(typeof ele);
-                    if (typeof ele != "string") {
-                      setFormByKey("numberOfRooms", parseInt(e.target.value));
-                    } else {
-                      handleClick();
-                    }
-                  } else {
-                    setFormByKey("numberOfRooms", 0);
-                  }
-                }}
-              />
-            </Grid>
+
             <FormHumanSelect />
             <Grid item xs={12} sm={6} />
             <Grid item xs={12} sm={5} />

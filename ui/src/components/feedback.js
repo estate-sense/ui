@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React from "react";
 import { ItemCondition } from "../components/item-condition";
 import { CBRContext } from "../index";
@@ -12,6 +12,9 @@ export default function Feedback() {
         {Object.values(selectedItems).map((element) => (
           <ItemCondition title={element?.name} itemNumber={element?.id} />
         ))}
+        <Button variant="contained" color="primary">
+          Submit to generative AI model
+        </Button>
       </Grid>
     </div>
   );
