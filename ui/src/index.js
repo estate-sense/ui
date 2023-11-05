@@ -39,11 +39,14 @@ const initialForm = {
 };
 
 const MyProvider = ({ children }) => {
+  const [videoURL, setVideoURL] = useState(null);
   const [valueMap, setMap] = useState(initialMap);
   const [formValues, setFormValues] = useState(initialForm);
   const [itemsCount, setItemsCount] = useState(7);
   const [selectedItems, setSelectedItems] = useState({});
-
+  const [objectsDetectedFromVideo, setObjectsDetectedFromVideo] = useState(
+    new Set()
+  );
   const updateValue = (key, newValue) => {
     let index = -1;
     for (let k in selectedItems) {
@@ -108,6 +111,10 @@ const MyProvider = ({ children }) => {
         setSelectedItems,
         itemsCount,
         setItemsCount,
+        videoURL,
+        setVideoURL,
+        objectsDetectedFromVideo,
+        setObjectsDetectedFromVideo,
       }}
     >
       {children}
