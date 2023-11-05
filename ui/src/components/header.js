@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const headerStyle = {
@@ -12,9 +13,14 @@ const Header = () => {
     zIndex: 1000,
   };
 
+  let navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/");
+  };
   return (
     <header style={headerStyle}>
-      <h1>EstateSense</h1>
+      <h1 onClick={handleButtonClick}>EstateSense</h1>
     </header>
   );
 };
