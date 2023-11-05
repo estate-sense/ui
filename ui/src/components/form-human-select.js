@@ -66,7 +66,7 @@ export const FormHumanSelect = () => {
   });
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
-      <InputLabel id="chiplabel">Select to access</InputLabel>
+      <InputLabel id="chiplabel">Select to validate</InputLabel>
       <Select
         labelId="test-label"
         id="assignTo"
