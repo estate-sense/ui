@@ -1,0 +1,2 @@
+# Estate Sense
+Estate Sense" is a cutting-edge solution designed to comprehensively manage and assess the condition of properties. Using a combination of computer vision,  Generative AI, and ML technologies, it analyzes various factors such as interior and exterior features, age, quality, renovations, defects, property maintenance, location, and market trends. The system generates detailed narratives on the condition of the subject property and provides comparative insights against similar properties in the market
