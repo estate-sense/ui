@@ -53,6 +53,21 @@ const personList = [
     name: "toilets",
     condition: "",
   },
+  {
+    id: 8,
+    name: "dining table",
+    condition: "",
+  },
+  {
+    id: 9,
+    name: "Chair",
+    condition: "",
+  },
+  {
+    id: 10,
+    name: "sink",
+    condition: "",
+  },
 ];
 
 export const FormHumanSelect = () => {
