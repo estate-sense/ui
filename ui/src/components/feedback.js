@@ -1,10 +1,17 @@
 import { Button, Grid } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ItemCondition } from "../components/item-condition";
 import { CBRContext } from "../index";
 import { handlePostRequest } from "./axios-calls";
 export default function Feedback() {
-  const { selectedItems, formValues } = React.useContext(CBRContext);
+  let navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/download");
+  };
+  const { selectedItems, formValues, setFormByKey } =
+    React.useContext(CBRContext);
   console.log(selectedItems);
   return (
     <div style={{ padding: "2vw" }}>
@@ -16,8 +23,14 @@ export default function Feedback() {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => {
-            handlePostRequest(formValues, selectedItems);
+          onClick={async () => {
+            const res = await handlePostRequest(formValues, selectedItems);
+            console.log(res);
+            if (res) {
+              // narativeText
+              setFormByKey("narativeText", res);
+              handleButtonClick();
+            }
           }}
         >
           Submit to generative AI model

@@ -67,7 +67,7 @@ export const handlePostRequest = async (selectItems, selectedItems2) => {
     for (const key in selectItems) {
       if (selectItems.hasOwnProperty(key)) {
         if (key === "ownerName") {
-          inputText += `Is owned  by ${selectItems[key]}. `;
+          //inputText += `Is owned  by ${selectItems[key]}. `;
         } else if (key === "typeofProperty") {
           inputText += `The building is a ${selectItems[key]} property. `;
         } else if (key === "sizeOfProperty") {
@@ -75,7 +75,7 @@ export const handlePostRequest = async (selectItems, selectedItems2) => {
         } else if (key === "yearConstructed") {
           inputText += `The building is constructed in ${selectItems[key]} year. `;
         } else if (key === "pin") {
-          inputText += `${selectItems[key]} is the building pin number`;
+          //inputText += `${selectItems[key]} is the building pin number`;
         } else if (key === "address") {
           inputText += `The property is located at ${selectItems[key]}. `;
         } else if (key === "sizeOfCarpet") {
@@ -114,7 +114,7 @@ export const handlePostRequest = async (selectItems, selectedItems2) => {
         } condition. `;
       }
     }
-    inputText += `Also, do some market research about similar properties near this house and tell me how it compares with them.`;
+    inputText += `Also, do some market research about similar properties near this house and tell me how it compares with them. Give answer in 100 words only`;
     console.log(inputText);
 
     const response = await axios({
@@ -126,11 +126,12 @@ export const handlePostRequest = async (selectItems, selectedItems2) => {
       },
       data: {
         prompt: inputText,
-        max_tokens: 1000, // Adjust this as needed
+        max_tokens: 150, // Adjust this as needed
       },
     });
 
-    console.log("Response:", response.data);
+    console.log("Response:", response?.data?.choices[0]?.text);
+    return response?.data?.choices[0]?.text;
   } catch (error) {
     // Handle errors
     console.error("Error:", error);

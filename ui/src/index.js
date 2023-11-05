@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
+import { DownloadReport } from "./components/download-report";
 import "./index.css";
 
 import DataCollection from "./components/data-collection";
@@ -36,6 +37,7 @@ const initialForm = {
   securityCondition: "",
   utilitiesCondition: "",
   roomsCondition: [],
+  narativeText: "",
 };
 
 const MyProvider = ({ children }) => {
@@ -125,6 +127,7 @@ root.render(
             {/* <Route path="" element={<Contact />} /> */}
             <Route path="feedback" element={<Feedback />} />
             <Route path="/data-collection" element={<DataCollection />} />
+            <Route path="/download" element={<DownloadReport />} />
             <Route path="/" element={<App />}>
               {/* <Route path="*" element={<NoPage />} /> */}
             </Route>
