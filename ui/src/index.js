@@ -54,6 +54,23 @@ const MyProvider = ({ children }) => {
 
   const getFormValueByKey = (key) =>
     formValues[key] === undefined ? -1 : formValues[key];
+
+  const updateRenovationDetails = (key, newValue) => {
+    const renovationDetails = {
+      ...formValues["renovationDetails"],
+      [key]: newValue,
+    };
+    setFormValues((prevMap) => ({
+      ...prevMap,
+      renovationDetails: renovationDetails,
+    }));
+  };
+
+  const getRenovationDetails = (key) =>
+    formValues["renovationDetails"][key] === undefined
+      ? -1
+      : formValues["renovationDetails"][key];
+
   return (
     <CBRContext.Provider
       value={{
@@ -63,6 +80,8 @@ const MyProvider = ({ children }) => {
         setFormByKey,
         getFormValueByKey,
         formValues,
+        updateRenovationDetails,
+        getRenovationDetails,
       }}
     >
       {children}

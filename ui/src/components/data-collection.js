@@ -29,8 +29,13 @@ export default function DataCollection() {
 
     setOpen(false);
   };
-  const { setFormByKey, getFormValueByKey, formValues } =
-    React.useContext(CBRContext);
+  const {
+    setFormByKey,
+    getFormValueByKey,
+    formValues,
+    updateRenovationDetails,
+    getRenovationDetails,
+  } = React.useContext(CBRContext);
   console.log(formValues);
   const [age, setAge] = React.useState("");
 
@@ -51,7 +56,7 @@ export default function DataCollection() {
             We are listening, Tell us more !
           </Typography>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -62,7 +67,7 @@ export default function DataCollection() {
                 Property Type
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <FormControl fullWidth size="small">
                 <InputLabel id="type">Type</InputLabel>
                 <Select
@@ -78,7 +83,7 @@ export default function DataCollection() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -89,7 +94,7 @@ export default function DataCollection() {
                 Owner name
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="ownerName"
                 label="Owner name"
@@ -100,7 +105,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -111,7 +116,7 @@ export default function DataCollection() {
                 Owner Phonenumber
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="ownerPhonenumber"
                 label="PhNo:"
@@ -122,7 +127,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -133,7 +138,7 @@ export default function DataCollection() {
                 Year constructed
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="year"
                 label="Year"
@@ -143,7 +148,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -154,7 +159,7 @@ export default function DataCollection() {
                 Size of Property in square foot
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="sizeInsqft"
                 label="sqft"
@@ -165,7 +170,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -176,7 +181,7 @@ export default function DataCollection() {
                 Property Identification Number
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="pin"
                 label="PIN"
@@ -187,7 +192,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -198,7 +203,7 @@ export default function DataCollection() {
                 Address
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="address"
                 label="Address"
@@ -211,7 +216,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -222,7 +227,7 @@ export default function DataCollection() {
                 Size of carpet in square foot
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="sizeOfCarpet"
                 label="sqft"
@@ -233,7 +238,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -244,7 +249,7 @@ export default function DataCollection() {
                 Number of rooms
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <TextField
                 id="rooms"
                 label="No. of rooms"
@@ -266,7 +271,7 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -277,7 +282,7 @@ export default function DataCollection() {
                 Has garage?
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <FormControl fullWidth size="small">
                 <InputLabel id="demo-simple-select-label">Garage?</InputLabel>
                 <Select
@@ -293,7 +298,7 @@ export default function DataCollection() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -304,7 +309,7 @@ export default function DataCollection() {
                 Is SmartHome?
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <FormControl fullWidth size="small">
                 <InputLabel id="isSmartHome">SmartHome?</InputLabel>
                 <Select
@@ -320,7 +325,7 @@ export default function DataCollection() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -331,7 +336,7 @@ export default function DataCollection() {
                 Has ParkingFacility?
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <FormControl fullWidth size="small">
                 <InputLabel id="hasParkingFacility">
                   ParkingFacility?
@@ -351,7 +356,7 @@ export default function DataCollection() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -362,7 +367,7 @@ export default function DataCollection() {
                 Has SecuritySystems?
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <FormControl fullWidth size="small">
                 <InputLabel id="hasSecuritySystems">
                   SecuritySystems?
@@ -382,7 +387,7 @@ export default function DataCollection() {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} xl={2}>
               <InputLabel
                 sx={{
                   display: "flex",
@@ -393,9 +398,9 @@ export default function DataCollection() {
                 is Renovated?
               </InputLabel>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xs={12} xl={10}>
               <FormControl fullWidth size="small">
-                <InputLabel id="isRenovated">smartHome</InputLabel>
+                <InputLabel id="isRenovated">Renovated?</InputLabel>
                 <Select
                   labelId="isRenovated"
                   id="isRenovated"
@@ -409,6 +414,152 @@ export default function DataCollection() {
                 </Select>
               </FormControl>
             </Grid>
+            {getFormValueByKey("isRenovated") &&
+            getFormValueByKey("isRenovated") !== "No" ? (
+              <>
+                <Grid item xs={12} xl={2}>
+                  <InputLabel
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Is Toilet Renovated?
+                  </InputLabel>
+                </Grid>
+                <Grid item xs={12} xl={10}>
+                  <FormControl fullWidth size="small">
+                    <InputLabel id="isToiletRenovated">
+                      is renovated?
+                    </InputLabel>
+                    <Select
+                      labelId="isToiletRenovated"
+                      id="isToiletRenovated"
+                      value={getRenovationDetails("isToiletRenovated")}
+                      label="isToiletRenovated"
+                      onChange={(e) =>
+                        updateRenovationDetails(
+                          "isToiletRenovated",
+                          e.target.value
+                        )
+                      }
+                    >
+                      {yesNo.map((item) => (
+                        <MenuItem value={item}>{item}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+
+                <Grid item xs={12} xl={2}>
+                  <InputLabel
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Is ceiling Renovated?
+                  </InputLabel>
+                </Grid>
+                <Grid item xs={12} xl={10}>
+                  <FormControl fullWidth size="small">
+                    <InputLabel id="isCeilingRenovated">
+                      is ceiling renovated?
+                    </InputLabel>
+                    <Select
+                      labelId="isCeilingRenovated"
+                      id="isCeilingRenovated"
+                      value={getRenovationDetails("isCeilingRenovated")}
+                      label="isCeilingRenovated"
+                      onChange={(e) =>
+                        updateRenovationDetails(
+                          "isCeilingRenovated",
+                          e.target.value
+                        )
+                      }
+                    >
+                      {yesNo.map((item) => (
+                        <MenuItem value={item}>{item}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+
+                <Grid item xs={12} xl={2}>
+                  <InputLabel
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Is flooring Renovated?
+                  </InputLabel>
+                </Grid>
+                <Grid item xs={12} xl={10}>
+                  <FormControl fullWidth size="small">
+                    <InputLabel id="isFlooringRenovated">
+                      is flooring renovated?
+                    </InputLabel>
+                    <Select
+                      labelId="isFlooringRenovated"
+                      id="isFlooringRenovated"
+                      value={getRenovationDetails("isFlooringRenovated")}
+                      label="isFlooringRenovated"
+                      onChange={(e) =>
+                        updateRenovationDetails(
+                          "isFlooringRenovated",
+                          e.target.value
+                        )
+                      }
+                    >
+                      {yesNo.map((item) => (
+                        <MenuItem value={item}>{item}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+
+                <Grid item xs={12} xl={2}>
+                  <InputLabel
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Is kitchen Renovated?
+                  </InputLabel>
+                </Grid>
+                <Grid item xs={12} xl={10}>
+                  <FormControl fullWidth size="small">
+                    <InputLabel id="isKitchenRenovated">
+                      is kitchen renovated?
+                    </InputLabel>
+                    <Select
+                      labelId="isKitchenRenovated"
+                      id="isKitchenRenovated"
+                      value={getRenovationDetails("isKitchenRenovated")}
+                      label="isKitchenRenovated"
+                      onChange={(e) =>
+                        updateRenovationDetails(
+                          "isKitchenRenovated",
+                          e.target.value
+                        )
+                      }
+                    >
+                      {yesNo.map((item) => (
+                        <MenuItem value={item}>{item}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+              </>
+            ) : (
+              <></>
+            )}
             <Grid item xs={12} sm={6} />
             <Grid item xs={12} sm={5} />
             <Grid item xs={12} sm={4}>
