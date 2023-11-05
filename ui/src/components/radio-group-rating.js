@@ -16,7 +16,7 @@ const StyledRating = styled(Rating)(({ theme }) => ({
   },
 }));
 
-const customIcons = {
+export const customIcons = {
   1: {
     icon: <ReplayIcon color="error" />,
     label: "Replace",

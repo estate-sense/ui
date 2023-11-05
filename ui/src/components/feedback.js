@@ -2,8 +2,9 @@ import { Button, Grid } from "@mui/material";
 import React from "react";
 import { ItemCondition } from "../components/item-condition";
 import { CBRContext } from "../index";
+import { handlePostRequest } from "./axios-calls";
 export default function Feedback() {
-  const { selectedItems } = React.useContext(CBRContext);
+  const { selectedItems, formValues } = React.useContext(CBRContext);
   console.log(selectedItems);
   return (
     <div style={{ padding: "2vw" }}>
@@ -12,7 +13,13 @@ export default function Feedback() {
         {Object.values(selectedItems).map((element) => (
           <ItemCondition title={element?.name} itemNumber={element?.id} />
         ))}
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            handlePostRequest(formValues, selectedItems);
+          }}
+        >
           Submit to generative AI model
         </Button>
       </Grid>
