@@ -432,52 +432,64 @@ export const generatePDF = (formValues, selectedValues) => {
   doc.setFontSize(20);
   doc.setFont("times", "bold");
   doc.setTextColor("#3D550C");
-  doc.text("Operational Aspects", 20, 100);
+  doc.text("Operational Aspects", 20, 105);
   doc.setFillColor("#81B622");
   doc.rect(100, 100, 100, 8, "F");
   doc.setTextColor(0, 0, 0);
 
   doc.setFont("times", "bold");
   doc.setFontSize(16);
-  doc.text("Parking Facilities", 10, 110);
+  doc.text("Parking Facilities", 10, 115);
   doc.setFont("normal", "normal");
   doc.setFontSize(14);
-  doc.text(`${formValues?.hasParkingFacility ? "Yes" : "No"}`, 10, 115);
+  doc.text(`${formValues?.hasParkingFacility ? "Yes" : "No"}`, 10, 120);
 
   doc.setFont("times", "bold");
   doc.setFontSize(16);
-  doc.text("Security Systems", 10, 125);
+  doc.text("Security Systems", 65, 115);
   doc.setFont("normal", "normal");
   doc.setFontSize(14);
-  doc.text(`${formValues?.hasSecuritySystems ? "Yes" : "No"}`, 10, 130);
+  doc.text(`${formValues?.hasSecuritySystems ? "Yes" : "No"}`, 65, 120);
 
   doc.setFont("times", "bold");
   doc.setFontSize(16);
-  doc.text("Utilities Condition", 10, 140);
+  doc.text("Utilities Condition", 120, 115);
   doc.setFont("normal", "normal");
   doc.setFontSize(14);
-  doc.text(`${utilitiesCondition ? "Yes" : "No"}`, 10, 145);
+  doc.text(`${formValues?.utilitiesCondition ? "Yes" : "No"}`, 120, 120);
 
-  const imagePath = "/Users/mayukhakuppili/Desktop/house.jpg";
+  const image = new Image();
+  image.src = "images/house-png.png";
+  doc.addImage(image, "png", 120, 40, 50, 50);
 
-  // Convert the image file to a data URL
-  const img = new Image();
-  img.src = imagePath;
+  doc.setFontSize(20);
+  doc.setFont("times", "bold");
+  doc.setTextColor("#3D550C");
+  doc.text("Images", 20, 130);
 
-  // Wait for the image to load
-  img.onload = function () {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, img.width, img.height);
+  const image1 = new Image();
+  image1.src = "images/img1.png";
+  doc.addImage(image1, "png", 10, 135, 60, 60);
 
-    // Convert canvas to data URL
-    const imageData = canvas.toDataURL("image/jpeg");
+  const image2 = new Image();
+  image2.src = "images/img2.png";
+  doc.addImage(image2, "png", 80, 135, 60, 60);
 
-    // Add image to PDF
-    doc.addImage(imageData, "JPEG", 100, 30, 100, 80); // (x, y, width, height)
-  };
+  const image3 = new Image();
+  image3.src = "images/img3.png";
+  doc.addImage(image3, "png", 150, 135, 60, 60);
 
+  doc.setFontSize(20);
+  doc.setFont("times", "bold");
+  doc.setTextColor("#3D550C");
+  doc.text("Faulty", 20, 205);
+
+  const image4 = new Image();
+  image4.src = "images/img4.png";
+  doc.addImage(image4, "png", 10, 210, 60, 60);
+
+  const image5 = new Image();
+  image5.src = "images/img5.png";
+  doc.addImage(image5, "png", 80, 210, 60, 60);
   doc.save("data.pdf");
 };

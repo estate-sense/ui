@@ -59,7 +59,7 @@ export const handlePostRequest = async (selectItems, selectedItems2) => {
     //   utilitiesCondition: "",
     //   roomsCondition: [],
     // };
-    const apiKey = "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";
+    const apiKey = "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";
     // Input text for the narrative
     let inputText =
       "Imagine yourself as a property inspector and a seller. Visualize your house has the following properties and give me a professional narrative to pitch to a prospective property buyer.";
