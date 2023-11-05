@@ -18,18 +18,53 @@ export const CBRContext = React.createContext();
 const initialMap = {};
 const initialForm = {
   ownerName: "",
+  ownerPhonenumber: "",
+  typeofProperty: "",
+  sizeOfProperty: "",
   yearConstructed: "",
+  pin: "",
+  address: "",
+  sizeOfCarpet: "",
+  numberOfRooms: 0,
+  hasGarage: "",
+  isSmartHome: "",
+  kitchenArea: "",
+  isRenovated: "",
+  renovationDetails: [],
+  hasParkingFacility: "",
+  hasSecuritySystems: "",
+  parkingCondition: "",
+  securityCondition: "",
+  utilitiesCondition: "",
+  roomsCondition: [],
 };
 const MyProvider = ({ children }) => {
   const [valueMap, setMap] = useState(initialMap);
+  const [formValues, setFormValues] = useState(initialForm);
 
   const updateValue = (key, newValue) => {
     setMap((prevMap) => ({ ...prevMap, [key]: newValue }));
   };
   const getValueByKey = (key) =>
     valueMap[key] === undefined ? -1 : valueMap[key];
+
+  const setFormByKey = (key, newValue) => {
+    setFormValues((prevMap) => ({ ...prevMap, [key]: newValue }));
+  };
+
+  const getFormValueByKey = (key) =>
+    formValues[key] === undefined ? -1 : formValues[key];
   return (
-    <CBRContext.Provider value={{ valueMap, updateValue, getValueByKey }}>
+    <CBRContext.Provider
+      value={{
+        valueMap,
+        updateValue,
+        getValueByKey,
+        setFormByKey,
+        getFormValueByKey,
+        formValues,
+      }}
+    >
       {children}
     </CBRContext.Provider>
   );
