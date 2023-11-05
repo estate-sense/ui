@@ -1,22 +1,17 @@
 import { Grid } from "@mui/material";
-import { ItemCondition } from "./item-condition";
-
+import React from "react";
+import { ItemCondition } from "../components/item-condition";
+import { CBRContext } from "../index";
 export default function Feedback() {
+  const { selectedItems } = React.useContext(CBRContext);
+  console.log(selectedItems);
   return (
     <div style={{ padding: "2vw" }}>
       <Grid container direction="column" justifyContent="space-around">
-        <ItemCondition title={"Item 1"} itemNumber={1} />
-        <ItemCondition title={"Item 2"} itemNumber={2} />
-        <ItemCondition title={"Item 3"} itemNumber={3} />
-
-        <ItemCondition title={"Item 4"} itemNumber={4} />
-        <ItemCondition title={"Item 4"} itemNumber={5} />
-        <ItemCondition title={"Item 1"} itemNumber={1} />
-        <ItemCondition title={"Item 2"} itemNumber={2} />
-        <ItemCondition title={"Item 3"} itemNumber={3} />
-
-        <ItemCondition title={"Item 4"} itemNumber={4} />
-        <ItemCondition title={"Item 4"} itemNumber={5} />
+        {/* <ItemCondition title={"Item 1"} itemNumber={1} /> */}
+        {Object.values(selectedItems).map((element) => (
+          <ItemCondition title={element?.name} itemNumber={element?.id} />
+        ))}
       </Grid>
     </div>
   );

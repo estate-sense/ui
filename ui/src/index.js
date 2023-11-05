@@ -37,16 +37,39 @@ const initialForm = {
   utilitiesCondition: "",
   roomsCondition: [],
 };
+
 const MyProvider = ({ children }) => {
   const [valueMap, setMap] = useState(initialMap);
   const [formValues, setFormValues] = useState(initialForm);
+  const [itemsCount, setItemsCount] = useState(7);
+  const [selectedItems, setSelectedItems] = useState({});
 
   const updateValue = (key, newValue) => {
-    setMap((prevMap) => ({ ...prevMap, [key]: newValue }));
+    let index = -1;
+    for (let k in selectedItems) {
+      if (selectedItems[k].id == key) {
+        index = k;
+      }
+    }
+    if (index !== -1) {
+      const current = { ...selectedItems[index], condition: newValue };
+      setSelectedItems((prevMap) => ({ ...prevMap, [index]: current }));
+    }
   };
-  const getValueByKey = (key) =>
-    valueMap[key] === undefined ? -1 : valueMap[key];
-
+  const getValueByKey = (key) => {
+    let index = -1;
+    for (let k in selectedItems) {
+      if (selectedItems[k].id == key) {
+        index = k;
+      }
+    }
+    if (index !== -1) {
+      return selectedItems[index] === undefined
+        ? -1
+        : selectedItems[index]["condition"];
+    }
+    return -1;
+  };
   const setFormByKey = (key, newValue) => {
     setFormValues((prevMap) => ({ ...prevMap, [key]: newValue }));
   };
@@ -81,6 +104,10 @@ const MyProvider = ({ children }) => {
         formValues,
         updateRenovationDetails,
         getRenovationDetails,
+        selectedItems,
+        setSelectedItems,
+        itemsCount,
+        setItemsCount,
       }}
     >
       {children}

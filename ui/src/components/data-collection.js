@@ -11,12 +11,18 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import { CBRContext } from "../index";
 import { FormHumanSelect } from "./form-human-select";
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 export default function DataCollection() {
+  let navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/feedback");
+  };
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -594,14 +600,16 @@ export default function DataCollection() {
                 }}
               />
             </Grid>
-            <Grid item>
-              <FormHumanSelect />
-            </Grid>
+            <FormHumanSelect />
             <Grid item xs={12} sm={6} />
             <Grid item xs={12} sm={5} />
             <Grid item xs={12} sm={4}>
-              <Button variant="contained" color="primary">
-                Save
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleButtonClick}
+              >
+                Start assesment
               </Button>
             </Grid>
             <Grid item xs={12} sm={5} />
