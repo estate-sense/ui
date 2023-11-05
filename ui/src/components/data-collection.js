@@ -12,6 +12,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { CBRContext } from "../index";
+import { FormHumanSelect } from "./form-human-select";
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -560,6 +561,42 @@ export default function DataCollection() {
             ) : (
               <></>
             )}
+            <Grid item xs={12} xl={2}>
+              <InputLabel
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  fontWeight: 700,
+                }}
+              >
+                Number of rooms
+              </InputLabel>
+            </Grid>
+            <Grid item xs={12} xl={10}>
+              <TextField
+                id="rooms"
+                label="No. of rooms"
+                fullWidth
+                required
+                value={getFormValueByKey("numberOfRooms")}
+                onChange={(e) => {
+                  if (e.target.value.length !== 0) {
+                    const ele = parseInt(e.target.value);
+                    console.log(typeof ele);
+                    if (typeof ele != "string") {
+                      setFormByKey("numberOfRooms", parseInt(e.target.value));
+                    } else {
+                      handleClick();
+                    }
+                  } else {
+                    setFormByKey("numberOfRooms", 0);
+                  }
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <FormHumanSelect />
+            </Grid>
             <Grid item xs={12} sm={6} />
             <Grid item xs={12} sm={5} />
             <Grid item xs={12} sm={4}>

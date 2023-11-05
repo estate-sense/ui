@@ -11,7 +11,6 @@ import "./index.css";
 import DataCollection from "./components/data-collection";
 import Feedback from "./components/feedback";
 import { default as Header } from "./components/header";
-import Home from "./components/home";
 import reportWebVitals from "./reportWebVitals";
 export const CBRContext = React.createContext();
 
@@ -99,12 +98,11 @@ root.render(
             {/* <Route path="" element={<Contact />} /> */}
             <Route path="feedback" element={<Feedback />} />
             <Route path="/data-collection" element={<DataCollection />} />
-            <Route path="/" element={<Home />}>
+            <Route path="/" element={<App />}>
               {/* <Route path="*" element={<NoPage />} /> */}
             </Route>
           </Routes>
         </BrowserRouter>
-        <App />
       </div>
     </MyProvider>
   </React.StrictMode>
